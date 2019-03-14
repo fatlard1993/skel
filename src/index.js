@@ -38,7 +38,7 @@ function makeTemplateFile(fileName, opts){
 
 	if(fs.existsSync(fileLocation) && !opts.force) return log.warn(`${fileLocation} already exists - to overwrite, run with --force`);
 
-	fs.writeFileSync(fileLocation, templates[fileName](opts));
+	fs.writeFileSync(fileLocation, templates[fileName] ? templates[fileName](opts) : '');
 }
 
 var files = [];
