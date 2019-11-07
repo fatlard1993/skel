@@ -5,11 +5,10 @@ const log = require('log');
 const fsExtended = require('fs-extended');
 
 const skel = {
-	config: new (require('config-manager'))(),
 	init: function(opts){
-		this.opts = Object.assign(this.config.current, opts);
-
 		this.rootPath = function rootPath(){ return path.join(opts.rootFolder, ...arguments); };
+		this.config = new (require('config-manager'))(this.rootPath('config.json'));
+		this.opts = Object.assign(this.config.current, opts);
 
 		if(!this.opts.type) return log.error('No type defined ... Provide one with --type <type>');
 		if(!this.opts.name) this.opts.name = this.opts.type;
