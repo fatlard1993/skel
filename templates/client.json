@@ -1,15 +1,8 @@
 {
 	"${name}": {
 		"src": {
-			"css": {
-				"index.css": "// includes\n"
-			},
-			"html": {
-				"index.html": "// includes index.css index.js\n"
-			},
-			"js": {
-				"index.js": "// includes log\n"
-			}
+			"index.css": "// includes\n",
+			"index.js": "// includes log\n"
 		},
 		".gitignore": "**/node_modules\n\ntemp",
 		".npmrc": "package-lock=false",

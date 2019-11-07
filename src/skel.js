@@ -33,7 +33,7 @@ const skel = {
 				return this.writeFile(name, folder, JSON.stringify(subTemplate, null, 2));
 			}
 
-			log('mkdir', path.join(folder, name));
+			log(1)('mkdir', path.join(folder, name));
 
 			fsExtended.mkdir(path.join(folder, name));
 
