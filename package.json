@@ -21,15 +21,15 @@
 		"extends": "rules"
 	},
 	"devDependencies": {
-		"babel-eslint": "^10.0.1",
-		"eslint": "^5.15.1",
-		"eslint-config-rules": "github:fatlard1993/eslint-config-rules"
+		"eslint-config-rules": "github:fatlard1993/eslint-config-rules#2.x.x",
+		"babel-eslint": "^10.0.3",
+		"eslint": "^6.6.0"
 	},
 	"dependencies": {
-		"config-manager": "github:fatlard1993/config-manager",
+		"config-manager": "github:fatlard1993/config-manager#2.x.x",
+		"fs-extended": "github:fatlard1993/fs-extended#2.x.x",
+		"log": "github:fatlard1993/log#2.x.x",
 		"find-root": "^1.1.0",
-		"fs-extended": "github:fatlard1993/fs-extended",
-		"log": "github:fatlard1993/log",
-		"yargs": "^13.2.2"
+		"yargs": "^14.2.0"
 	}
 }
