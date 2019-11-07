@@ -2,73 +2,66 @@
 
 const fs = require('fs');
 const path = require('path');
-const { exec } = require('child_process');
 
-const args = require('yargs').argv;
+const yargs = require('yargs');
+const rootFolder = require('find-root')(__dirname);
 
-if(args.d) process.env.DBG = args.d;
-if(args.dev) process.env.COLOR = 1;
+function rootPath(){ return path.join(rootFolder, ...arguments); }
+
+const templates = fs.readdirSync(rootPath('templates')).map((item) => {
+	// todo support folders: eg folder/file.json == folder-file
+
+	return item.replace('.json', '');
+});
+
+yargs.alias({
+	h: 'help',
+	ver: 'version',
+	v: 'verbosity',
+	s: 'simulate',
+	f: 'folder',
+	t: 'type',
+	n: 'name'
+});
+
+yargs.boolean(['h', 'ver']);
+
+yargs.default({
+	v: 1,
+	f: process.cwd()
+});
+
+yargs.describe({
+	h: 'This',
+	v: '<level>',
+	s: 'See what would happen, without making changes',
+	f: '<folder>',
+	t: `<type> (${templates.join(' | ')})`,
+	n: '<name>'
+});
+
+var opts = yargs.argv;
+
+opts.rootFolder = rootFolder;
+opts.templates = templates;
+
+delete opts._;
+delete opts.$0;
+delete opts.v;
+delete opts.f;
+delete opts.t;
+delete opts.n;
+
+opts.verbosity = Number(opts.verbosity);
+
+//log args polyfill
+process.env.DBG = opts.verbosity;
+process.env.COLOR = true;
 
 const log = require('log');
-const fsExtended = require('fs-extended');
-const findRoot = require('find-root');
-const Config = require('config-manager');
 
-const templates = require('./templates');
+log(1)(opts);
 
-const rootFolder = findRoot(process.cwd());
+if(!templates.length) return log.error(`No templates exist yet! Put your templates in ${rootPath('templates')}`);
 
-var config = new Config();
-
-var opts = Object.assign(config.current, args);
-
-function makeTemplateFile(fileName, opts){
-	var fileNameSplit = /(\/?.+\/)(.*)/g.exec(fileName), fileLocation;
-
-	if(fileNameSplit){
-		opts.path = fileNameSplit[1];
-		fileName = fileNameSplit[2];
-
-		fileLocation = path.join(process.cwd(), opts.path);
-
-		if(!fs.existsSync(fileLocation)) fsExtended.mkdir(fileLocation);
-	}
-
-	fileLocation = path.join(process.cwd(), opts.path || '', fileName);
-
-	if(fs.existsSync(fileLocation) && !opts.force) return log.warn(`${fileLocation} already exists - to overwrite, run with --force`);
-
-	fs.writeFileSync(fileLocation, templates[fileName] ? templates[fileName](opts) : '');
-}
-
-var files = [];
-
-if(args.f && templates[args.f]){
-	makeTemplateFile(args.f, opts);
-}
-
-if(args.nodeProject){
-	opts.projectName = args.nodeProject;
-
-	files = files.concat(['.gitignore', 'package.json', 'src/index.js']);
-
-	if(!args.server) files = files.concat(['server/index.js']);
-}
-
-if(args.server){
-	opts.projectName = args.nodeProject;
-
-	files = files.concat(['server/index.js']);
-}
-
-if(args.client){
-	opts.projectName = args.nodeProject;
-
-	files = files.concat([`client/js/${typeof args.client === 'string' ? args.client : 'index'}.js`, `client/css/${typeof args.client === 'string' ? args.client : 'index'}.css`, `client/resources/site.webmanifest`, `client/html/${typeof args.client === 'string' ? args.client : 'index'}.html`]);
-}
-
-if(files){
-	files.forEach((file) => {
-		makeTemplateFile(file, opts);
-	});
-}
+(require('./skel')).init(opts);

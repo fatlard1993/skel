@@ -1,0 +1,47 @@
+{
+	"${name}": {
+		"src": {
+			"css": {
+				"index.css": "// includes\n"
+			},
+			"html": {
+				"index.html": "// includes index.css index.js\n"
+			},
+			"js": {
+				"index.js": "// includes log\n"
+			}
+		},
+		".gitignore": "**/node_modules\n\ntemp",
+		".npmrc": "package-lock=false",
+		"package.json": {
+			"_jsonFile": true,
+			"name": "${name}",
+			"version": "1.0.0",
+			"description": "${name}",
+			"author": "${gitHubUser}",
+			"license": "ISC",
+			"scripts": {
+				"test": "echo \"Error: no test specified\" && exit 1"
+			},
+			"repository": {
+				"type": "git",
+				"url": "git+https://github.com/${gitHubUser}/${name}.git"
+			},
+			"bugs": {
+				"url": "https://github.com/${gitHubUser}/${name}/issues"
+			},
+			"homepage": "https://github.com/${gitHubUser}/${name}#readme",
+			"eslintConfig": {
+				"extends": "rules"
+			},
+			"devDependencies": {
+				"eslint-config-rules": "github:${gitHubUser}/eslint-config-rules#2.x.x",
+				"babel-eslint": "^10.0.3",
+				"eslint": "^6.6.0"
+			},
+			"dependencies": {
+				"log": "github:fatlard1993/log#2.x.x"
+			}
+		}
+	}
+}
