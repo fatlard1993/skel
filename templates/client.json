@@ -2,10 +2,11 @@
 	"${name}": {
 		"src": {
 			"index.css": "// includes\n",
-			"index.js": "// includes log\n"
+			"index.js": "// includes log\n// babel\n/* global log */\n"
 		},
 		".gitignore": "**/node_modules\n\ntemp",
 		".npmrc": "package-lock=false",
+		"README.md": "# ${name}\n",
 		"package.json": {
 			"_jsonFile": true,
 			"name": "${name}",
