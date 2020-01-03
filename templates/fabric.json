@@ -1,0 +1,38 @@
+{
+	"${name}": {
+		"gradle": {
+			"wrapper": {
+				"gradle-wrapper.jar": ["fabric/gradle-wrapper.jar"],
+				"gradle-wrapper.properties": ["fabric/gradle-wrapper.properties"]
+			}
+		},
+		"src": {
+			"main": {
+				"java": {
+					"${user}": {
+						"${maven}": {
+							"Main.java": ["fabric/Main.java"]
+						}
+					}
+				},
+				"resources": {
+					"fabric.mod.json": ["fabric/fabric.mod.json"],
+					"assets": {
+						"${name}-${user}": {}
+					},
+					"data": {
+						"${name}-${user}": {}
+					}
+				}
+			}
+		},
+		".gitignore": ["fabric/.gitignore"],
+		"build.gradle": ["fabric/build.gradle"],
+		"gradle.properties": ["fabric/gradle.properties"],
+		"gradlew": ["fabric/gradlew"],
+		"gradlew.bat": ["fabric/gradlew.bat"],
+		"LICENSE": ["LICENSE"],
+		"settings.gradle": ["fabric/settings.gradle"],
+		"README.md": "# ${name}\n"
+	}
+}

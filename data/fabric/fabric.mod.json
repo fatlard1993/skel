@@ -1,0 +1,26 @@
+{
+	"_jsonFile": true,
+	"schemaVersion": 1,
+	"id": "${name}",
+	"version": "${version}",
+	"name": "${name}",
+	"description": "${description}",
+	"authors": ["${user}"],
+	"contact": {
+		"sources": "https://github.com/${gitHubUser}/${name}"
+	},
+	"license": "MIT",
+	"icon": "assets/${name}-${user}/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["${user}.${maven}.Main"]
+	},
+	"depends": {
+		"fabricloader": ">=0.7.2",
+		"fabric": "*",
+		"minecraft": "1.15.x"
+	},
+	"suggests": {
+		"flamingo": "*"
+	}
+}
