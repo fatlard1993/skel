@@ -33,6 +33,14 @@ const skel = {
 				return this.writeFile(name, folder, JSON.stringify(subTemplate, null, 2));
 			}
 
+			else if(subTemplate._data){
+				if(fs.existsSync(this.rootPath('data', subTemplate._data))) fsExtended.copySync(this.rootPath('data', subTemplate._data), path.join(folder, name));
+
+				else log.error(`Missing ${this.rootPath('data', subTemplate._data)}`);
+
+				return;
+			}
+
 			else if(Array.isArray(subTemplate)){
 				var templateFile = '';
 
