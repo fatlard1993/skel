@@ -3,9 +3,15 @@ const path = require('path');
 const exec = require('child_process').exec;
 
 const log = require('log');
+const util = require('js-util');
 const fsExtended = require('fs-extended');
 
 const skel = {
+	optTransformations: {
+		regReplace: function(base, regEx, str){
+			return base.replace(new RegExp(regEx), str);
+		}
+	},
 	init: function(opts){
 		this.rootPath = function rootPath(){ return path.join(opts.rootFolder, ...arguments); };
 		this.config = new (require('config-manager'))(this.rootPath('config.json'));
@@ -27,6 +33,36 @@ const skel = {
 			scripts = template._scripts;
 
 			delete template._scripts;
+		}
+
+		if(template._opts){
+			this.opts = Object.assign(this.opts, template._opts);
+
+			Object.keys(template._opts).forEach((key) => {
+				if(typeof template._opts[key] === 'string') this.opts[key] = this.fillOpts(template._opts[key]);
+
+				else if(typeof template._opts[key] === 'object'){
+					var base = this.fillOpts(template._opts[key].base);
+
+					template._opts[key].apply.forEach((transformation, index) => {
+						var args = template._opts[key].apply[index].args.map((item) => { return this.fillOpts(item); });
+
+						transformation = template._opts[key].apply[index].name;
+
+						log()(key, transformation, args);
+
+						if(typeof base[transformation] === 'function') base = base[transformation](...args);
+
+						else if(typeof this.optTransformations[transformation] === 'function') base = this.optTransformations[transformation](base, ...args);
+
+						else if(typeof util[transformation] === 'function') base = util[transformation](base, ...args);
+
+						template._opts[key].base = this.opts[key] = base;
+					});
+				}
+			});
+
+			delete template._opts;
 		}
 
 		Object.keys(template).forEach((name) => {

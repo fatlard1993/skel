@@ -29,6 +29,7 @@
 		"config-manager": "github:fatlard1993/config-manager#2.x.x",
 		"fs-extended": "github:fatlard1993/fs-extended#2.x.x",
 		"log": "github:fatlard1993/log#2.x.x",
+		"js-util": "github:fatlard1993/js-util#2.x.x",
 		"find-root": "^1.1.0",
 		"yargs": "^14.2.0"
 	}
