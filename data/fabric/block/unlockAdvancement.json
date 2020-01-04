@@ -1,0 +1,10 @@
+
+{
+  "criteria": {
+    "required_criteria_0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": { "items": [{ "item": "minecraft:stick" }] }
+    }
+  },
+  "rewards": { "recipes": ["${id}:block/${name}"] }
+}

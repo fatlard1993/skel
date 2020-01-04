@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "${name}-${user}:${name}_block"
+          "name": "${id}:${name}"
         }
       ],
       "conditions": [

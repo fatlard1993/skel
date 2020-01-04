@@ -1,4 +1,28 @@
 {
+	"_opts": {
+		"id": "${name}-${user}",
+		"displayName": {
+			"base": "${name}",
+			"apply": [
+				{ "name": "capitalize", "args": [true, "-"] },
+				{ "name": "regReplace", "args": ["-", " "] }
+			]
+		},
+		"maven": "${name}",
+		"_name": {
+			"base": "${name}",
+			"apply": [
+				{ "name": "regReplace", "args": ["-", "_"] }
+			]
+		},
+		"block": {
+			"base": "${name}",
+			"apply": [
+				{ "name": "capitalize", "args": [true, "-"] },
+				{ "name": "regReplace", "args": ["-", ""] }
+			]
+		}
+	},
 	"${name}": {
 		"gradle": {
 			"wrapper": {
@@ -10,28 +34,41 @@
 			"main": {
 				"java": {
 					"${user}": {
-						"${maven}": {
+						"${_name}": {
 							"Main.java": ["fabric/block/Main.java"],
-							"MyBlock.java": ["fabric/block/MyBlock.java"]
+							"${block}.java": ["fabric/block/block.java"]
 						}
 					}
 				},
 				"resources": {
 					"fabric.mod.json": ["fabric/fabric.mod.json"],
 					"assets": {
-						"${name}-${user}": {
+						"${id}": {
 							"blockstates": {
-								"${name}_block.json": ["fabric/block/blockstate.json"]
+								"${name}.json": ["fabric/block/blockstate.json"]
 							},
-							"loot_tables": {
-								"block": {
-									"${name}_block.json": ["fabric/block/loot_table.json"]
+							"lang": {
+								"en_us.json": {
+									"_jsonFile": true,
+									"block.${id}.${name}": "${displayName}"
 								}
+							},
+							"textures": {
+								"block": {}
 							}
 						}
 					},
 					"data": {
-						"${name}-${user}": {}
+						"${id}": {
+							"loot_tables": {
+								"block": {
+									"${name}.json": ["fabric/block/loot_table.json"]
+								}
+							},
+							"advancements": {
+								"unlock_${_name}.json": ["fabric/block/unlockAdvancement.json"]
+							}
+						}
 					}
 				}
 			}
@@ -43,7 +80,7 @@
 		"gradlew.bat": { "_data": "fabric/gradle/gradlew.bat" },
 		"LICENSE": ["LICENSE"],
 		"settings.gradle": ["fabric/gradle/settings.gradle"],
-		"README.md": "# ${name}\n"
+		"README.md": "# ${displayName}\n"
 	},
 	"_scripts": ["fabric/init"]
 }

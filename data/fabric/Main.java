@@ -1,4 +1,4 @@
-package ${user}.${maven};
+package ${user}.${_name};
 
 import net.fabricmc.api.ModInitializer;
 

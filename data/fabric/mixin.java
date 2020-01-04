@@ -1,4 +1,4 @@
-package ${user}.${maven}.mixin;
+package ${user}.${_name}.mixin;
 
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;

@@ -1,3 +1,3 @@
 {
-  "parent": "${name}-${user}:block/${name}_block"
+  "parent": "${id}:block/${name}"
 }
