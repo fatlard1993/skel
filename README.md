@@ -20,9 +20,22 @@ Options:
   --ver, --version  Show version number                                [boolean]
 ```
 
-### Example
+### Examples
 
-`skel -t template -f ~/code -n cool-new-project`
+Generic:
+```
+skel -t template -f ~/code -n cool-new-project
+```
+
+Fabric/Block:
+```
+skel -t fabric/block -n cool-mod --maven cool_mod
+```
+
+node:
+```
+skel -t node -f ./node_code -n neat-node-app
+```
 
 #### Scripts
 
