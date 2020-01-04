@@ -8,11 +8,23 @@ const rootFolder = require('find-root')(__dirname);
 
 function rootPath(){ return path.join(rootFolder, ...arguments); }
 
-const templates = fs.readdirSync(rootPath('templates')).map((item) => {
-	// todo support folders: eg folder/file.json == folder-file
+var templates = [];
 
-	return item.replace('.json', '');
-});
+function registerTemplate(name){ templates.push(name); }
+
+function registerTemplateFolder(folder){
+	var folderPath = folder ? rootPath('templates', folder) : rootPath('templates');
+
+	fs.readdirSync(folderPath).forEach((name) => {
+		var file = path.join(folderPath, name);
+
+		if(fs.lstatSync(file).isDirectory()) return registerTemplateFolder(name);
+
+		registerTemplate(`${folder ? folder +'/' : ''}${name.replace('.json', '')}`);
+	});
+}
+
+registerTemplateFolder();
 
 yargs.alias({
 	h: 'help',
