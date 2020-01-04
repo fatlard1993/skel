@@ -23,3 +23,26 @@ Options:
 ### Example
 
 `skel -t template -f ~/code -n cool-new-project`
+
+#### Scripts
+
+Batch:
+```
+ECHO "skel %1"
+ECHO "template %2"
+```
+
+Bash:
+```
+#!/bin/bash
+
+echo "skel: ${1}"
+echo "template: ${2}"
+```
+
+JavaScript:
+```
+module.exports = function(skel, template){
+	console.log(skel, template);
+};
+```
