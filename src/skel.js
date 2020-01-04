@@ -70,7 +70,7 @@ const skel = {
 		});
 
 		scripts.forEach((script) => {
-			log.info(script);
+			log.info('Running post script:', script);
 
 			if((!this.opts.platform || this.opts.platform === 'linux') && fs.existsSync(this.rootPath('scripts', script +'.sh'))) exec(this.rootPath('scripts', `${script}.sh ${this.opts.rootFolder} ${path.join(folder, this.opts.name)}`), log.info());
 
