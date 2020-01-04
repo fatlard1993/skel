@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "${name}-${user}:block/${name}_block" }
+	}
+}

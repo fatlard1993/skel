@@ -2,8 +2,8 @@
 	"${name}": {
 		"gradle": {
 			"wrapper": {
-				"gradle-wrapper.jar": { "_data": "fabric/gradle-wrapper.jar" },
-				"gradle-wrapper.properties": ["fabric/gradle-wrapper.properties"]
+				"gradle-wrapper.jar": { "_data": "fabric/gradle/gradle-wrapper.jar" },
+				"gradle-wrapper.properties": ["fabric/gradle/gradle-wrapper.properties"]
 			}
 		},
 		"src": {
@@ -31,12 +31,13 @@
 			}
 		},
 		".gitignore": ["fabric/.gitignore"],
-		"build.gradle": ["fabric/build.gradle"],
-		"gradle.properties": ["fabric/gradle.properties"],
-		"gradlew": { "_data": "fabric/gradlew" },
-		"gradlew.bat": { "_data": "fabric/gradlew.bat" },
+		"build.gradle": ["fabric/gradle/build.gradle"],
+		"gradle.properties": ["fabric/gradle/gradle.properties"],
+		"gradlew": { "_data": "fabric/gradle/gradlew" },
+		"gradlew.bat": { "_data": "fabric/gradle/gradlew.bat" },
 		"LICENSE": ["LICENSE"],
-		"settings.gradle": ["fabric/settings.gradle"],
+		"settings.gradle": ["fabric/gradle/settings.gradle"],
 		"README.md": "# ${name}\n"
-	}
+	},
+	"_scripts": ["fabric/init"]
 }
