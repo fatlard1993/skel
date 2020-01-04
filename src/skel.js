@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const exec = require('child_process').exec;
 
 const log = require('log');
 const fsExtended = require('fs-extended');
@@ -19,6 +20,14 @@ const skel = {
 	},
 	create: function(template, folder = process.cwd()){
 		log(1)(template);
+
+		var scripts = [];
+
+		if(template._scripts){
+			scripts = template._scripts;
+
+			delete template._scripts;
+		}
 
 		Object.keys(template).forEach((name) => {
 			const subTemplate = template[name];
@@ -58,6 +67,16 @@ const skel = {
 			fsExtended.mkdir(path.join(folder, name));
 
 			this.create(subTemplate, path.join(folder, name));
+		});
+
+		scripts.forEach((script) => {
+			log.info(script);
+
+			if((!this.opts.platform || this.opts.platform === 'linux') && fs.existsSync(this.rootPath('scripts', script +'.sh'))) exec(this.rootPath('scripts', `${script}.sh ${this.opts.rootFolder} ${path.join(folder, this.opts.name)}`), log.info());
+
+			if((!this.opts.platform || this.opts.platform === 'windows') && fs.existsSync(this.rootPath('scripts', script +'.bat'))) exec(this.rootPath('scripts', `${script}.bat ${this.opts.rootFolder} ${path.join(folder, this.opts.name)}`), log.info());
+
+			if(fs.existsSync(this.rootPath('scripts', script +'.js'))) require(this.rootPath('scripts', script))(this.opts.rootFolder, path.join(folder, this.opts.name));
 		});
 	},
 	fillOpts: function(text){
