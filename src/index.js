@@ -33,10 +33,11 @@ yargs.alias({
 	s: 'simulate',
 	f: 'folder',
 	t: 'type',
-	n: 'name'
+	n: 'name',
+	c: 'configure'
 });
 
-yargs.boolean(['h', 'ver']);
+yargs.boolean(['h', 'ver', 'c']);
 
 yargs.default({
 	v: 1,
@@ -49,24 +50,17 @@ yargs.describe({
 	s: 'See what would happen, without making changes',
 	f: '<folder>',
 	t: `<type> (${templates.join(' | ')})`,
-	n: '<name>'
+	n: '<name>',
+	c: 'Save all options to config'
 });
 
-var opts = yargs.argv;
+var args = yargs.argv;
 
-opts.rootFolder = rootFolder;
-opts.templates = templates;
+['_', '$0', 'v', 'f', 't', 'n', 'c'].forEach((item) => { delete args[item]; });
 
-delete opts._;
-delete opts.$0;
-delete opts.v;
-delete opts.f;
-delete opts.t;
-delete opts.n;
+var opts = Object.assign(args, { args: Object.assign({}, args), rootFolder, templates, verbosity: Number(args.verbosity) });
 
-opts.verbosity = Number(opts.verbosity);
-
-//log args polyfill
+//log args
 process.env.DBG = opts.verbosity;
 process.env.COLOR = true;
 

@@ -17,6 +17,7 @@ Options:
   -f, --folder      <folder>                                      [default: "/"]
   -t, --type        <type> (example | template)
   -n, --name        <name>
+  -c, --configure   Save all options to config                         [boolean]
   --ver, --version  Show version number                                [boolean]
 ```
 

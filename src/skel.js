@@ -15,6 +15,15 @@ const skel = {
 	init: function(opts){
 		this.rootPath = function rootPath(){ return path.join(opts.rootFolder, ...arguments); };
 		this.config = new (require('config-manager'))(this.rootPath('config.json'));
+
+		if(opts.configure){
+			this.config.current = Object.assign(this.config.current, opts.args);
+
+			['configure', 'folder', 'verbosity'].forEach((item) => { delete this.config.current[item]; });
+
+			return this.config.save();
+		}
+
 		this.opts = Object.assign(this.config.current, opts);
 
 		if(!this.opts.type) return log.error('No type defined ... Provide one with --type <type>');
