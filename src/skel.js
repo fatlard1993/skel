@@ -58,8 +58,6 @@ const skel = {
 
 						transformation = template._opts[key].apply[index].name;
 
-						log()(key, transformation, args);
-
 						if(typeof base[transformation] === 'function') base = base[transformation](...args);
 
 						else if(typeof this.optTransformations[transformation] === 'function') base = this.optTransformations[transformation](base, ...args);
