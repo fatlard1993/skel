@@ -8,7 +8,8 @@
 				{ "name": "regReplace", "args": ["-", " "] }
 			]
 		},
-		"maven": {
+		"maven": "${name}",
+		"_name": {
 			"base": "${name}",
 			"apply": [
 				{ "name": "regReplace", "args": ["-", "_"] }
