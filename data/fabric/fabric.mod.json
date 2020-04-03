@@ -2,7 +2,7 @@
 	"_jsonFile": true,
 	"schemaVersion": 1,
 	"id": "${name}",
-	"version": "${version}",
+	"version": "${initVersion}",
 	"name": "${name}",
 	"description": "${description}",
 	"authors": ["${user}"],
