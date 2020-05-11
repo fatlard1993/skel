@@ -10,13 +10,19 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class Main implements ModInitializer {
-	public static final ${block} ${_name} = new ${block}(Block.Settings.of(Material.STONE));
-	public static final BlockItem ${_name}_item = new BlockItem(${_name}, new Item.Settings().group(ItemGroup.MISC));
+	public static final String MOD_ID = "${id}";
+
+	public static final ${block} ${_NAME} = new ${block}(Block.Settings.of(Material.STONE));
+
+	private static void register(String name, Block block){
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, name), new BlockItem(block, new Item.Settings().group(ItemGroup.MISC)));
+
+		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, name), block);
+	}
 
 	@Override
 	public void onInitialize(){
-		Registry.register(Registry.BLOCK, new Identifier("${id}", "${name}"), ${_name});
-		Registry.register(Registry.ITEM, new Identifier("${id}", "${name}"), ${_name}_item);
+		register("${_name}", ${_NAME});
 
 		System.out.println("Loaded ${name}");
 	}
