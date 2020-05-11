@@ -1,21 +1,5 @@
 {
-	"_opts": {
-		"id": "${name}-${user}",
-		"displayName": {
-			"base": "${name}",
-			"apply": [
-				{ "name": "capitalize", "args": [true, "-"] },
-				{ "name": "regReplace", "args": ["-", " "] }
-			]
-		},
-		"maven": "${name}",
-		"_name": {
-			"base": "${name}",
-			"apply": [
-				{ "name": "regReplace", "args": ["-", "_"] }
-			]
-		}
-	},
+	"_opts": "fabric",
 	"${name}": {
 		"gradle": {
 			"wrapper": {
@@ -43,14 +27,14 @@
 				}
 			}
 		},
-		".gitignore": ["fabric/.gitignore"],
+		".gitignore": ["fabric/gitignore"],
 		"build.gradle": ["fabric/gradle/build.gradle"],
 		"gradle.properties": ["fabric/gradle/gradle.properties"],
 		"gradlew": { "_data": "fabric/gradle/gradlew" },
 		"gradlew.bat": { "_data": "fabric/gradle/gradlew.bat" },
 		"LICENSE": ["LICENSE"],
 		"settings.gradle": ["fabric/gradle/settings.gradle"],
-		"README.md": "# ${displayName}\n"
+		"README.md": ["fabric/README.md"]
 	},
 	"_scripts": ["fabric/init"]
 }

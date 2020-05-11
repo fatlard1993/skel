@@ -38,7 +38,7 @@
 		"gradlew.bat": { "_data": "fabric/gradle/gradlew.bat" },
 		"LICENSE": ["LICENSE"],
 		"settings.gradle": ["fabric/gradle/settings.gradle"],
-		"README.md": "# ${name}\n"
+		"README.md": ["fabric/README.md"]
 	},
 	"_scripts": ["fabric/init"]
 }
