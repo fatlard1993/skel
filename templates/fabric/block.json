@@ -1,28 +1,5 @@
 {
-	"_opts": {
-		"id": "${name}-${user}",
-		"displayName": {
-			"base": "${name}",
-			"apply": [
-				{ "name": "capitalize", "args": [true, "-"] },
-				{ "name": "regReplace", "args": ["-", " "] }
-			]
-		},
-		"maven": "${name}",
-		"_name": {
-			"base": "${name}",
-			"apply": [
-				{ "name": "regReplace", "args": ["-", "_"] }
-			]
-		},
-		"block": {
-			"base": "${name}",
-			"apply": [
-				{ "name": "capitalize", "args": [true, "-"] },
-				{ "name": "regReplace", "args": ["-", ""] }
-			]
-		}
-	},
+	"_opts": "fabric",
 	"${name}": {
 		"gradle": {
 			"wrapper": {
@@ -45,12 +22,12 @@
 					"assets": {
 						"${id}": {
 							"blockstates": {
-								"${name}.json": ["fabric/block/blockstate.json"]
+								"${_name}.json": ["fabric/block/blockstateSimple.json"]
 							},
 							"lang": {
 								"en_us.json": {
 									"_jsonFile": true,
-									"block.${id}.${name}": "${displayName}"
+									"block.${id}.${_name}": "${displayName}"
 								}
 							},
 							"textures": {
@@ -65,11 +42,16 @@
 						"${id}": {
 							"loot_tables": {
 								"block": {
-									"${name}.json": ["fabric/block/loot_table.json"]
+									"${_name}.json": ["fabric/block/loot_table.json"]
 								}
 							},
 							"advancements": {
-								"unlock_${_name}.json": ["fabric/block/unlockAdvancement.json"]
+								"recipes": {
+									"${_name}.json": ["fabric/block/recipeAdvancement.json"]
+								}
+							},
+							"recipes": {
+								"${_name}.json": ["fabric/recipeShaped.json"]
 							}
 						}
 					}

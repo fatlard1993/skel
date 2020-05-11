@@ -45,9 +45,13 @@ const skel = {
 		}
 
 		if(template._opts){
-			this.opts = Object.assign(this.opts, template._opts);
+			if(typeof template._opts === 'string') template._opts = require(this.rootPath('options', template._opts));
+
+			log(1)('Loading template._opts', template._opts);
 
 			Object.keys(template._opts).forEach((key) => {
+				if(this.opts[key]) return;
+
 				if(typeof template._opts[key] === 'string') this.opts[key] = this.fillOpts(template._opts[key]);
 
 				else if(typeof template._opts[key] === 'object'){
@@ -69,8 +73,12 @@ const skel = {
 				}
 			});
 
+			this.opts = Object.assign(template._opts, this.opts);
+
 			delete template._opts;
 		}
+
+		log(1)('Loaded options', this.opts);
 
 		Object.keys(template).forEach((name) => {
 			const subTemplate = template[name];

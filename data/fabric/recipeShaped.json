@@ -1,10 +1,10 @@
 {
 	"type": "crafting_shaped",
 	"pattern": [
-			"#",
-			"#",
-			"#"
+		"#",
+		"#",
+		"#"
 	],
-	"key": { "#": { "item": "minecraft:blockName" } },
-	"result": { "item": "${id}:${name}" }
+	"key": { "#": { "item": "minecraft:block_id" } },
+	"result": { "item": "${id}:${_name}" }
 }
