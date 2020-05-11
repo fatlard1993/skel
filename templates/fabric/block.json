@@ -63,7 +63,7 @@
 				}
 			}
 		},
-		".gitignore": ["fabric/.gitignore"],
+		".gitignore": ["fabric/gitignore"],
 		"build.gradle": ["fabric/gradle/build.gradle"],
 		"gradle.properties": ["fabric/gradle/gradle.properties"],
 		"gradlew": { "_data": "fabric/gradle/gradlew" },

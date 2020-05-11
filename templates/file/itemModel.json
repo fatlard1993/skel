@@ -1,0 +1,4 @@
+{
+	"_opts": "fabric",
+	"${_name}.json": ["fabric/block/itemModel.json"]
+}
