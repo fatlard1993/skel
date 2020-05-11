@@ -6,4 +6,7 @@ temp
 
 data/fabric/build
 data/fabric/.gradle
+data/fabric/gradle/.gradle
+data/fabric/gradle/.classpath
 data/fabric/gradle/.project
+data/fabric/gradle/.settings
