@@ -34,7 +34,12 @@
 								"block": {}
 							},
 							"models": {
-								"block": {}
+								"block": {
+									"${_name}.json": ["fabric/block/blockModel.json"]
+								},
+								"item": {
+									"${_name}.json": ["fabric/block/itemModel.json"]
+								}
 							}
 						}
 					},
