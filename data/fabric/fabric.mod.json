@@ -1,5 +1,4 @@
 {
-	"_jsonFile": true,
 	"schemaVersion": 1,
 	"id": "${name}",
 	"version": "${version}",
