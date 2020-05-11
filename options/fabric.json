@@ -14,6 +14,13 @@
 			{ "name": "regReplace", "args": ["-", "_"] }
 		]
 	},
+	"_NAME": {
+		"base": "${name}",
+		"apply": [
+			{ "name": "capitalize", "args": [true, "_"] },
+			{ "name": "regReplace", "args": ["-", "_"] }
+		]
+	},
 	"block": {
 		"base": "${name}",
 		"apply": [
