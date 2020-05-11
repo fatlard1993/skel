@@ -6,3 +6,4 @@ temp
 
 data/fabric/build
 data/fabric/.gradle
+data/fabric/gradle/.project
