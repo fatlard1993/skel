@@ -1,0 +1,24 @@
+{
+	"id": "${name}-${user}",
+	"displayName": {
+		"base": "${name}",
+		"apply": [
+			{ "name": "capitalize", "args": [true, "-"] },
+			{ "name": "regReplace", "args": ["-", " "] }
+		]
+	},
+	"maven": "${name}",
+	"_name": {
+		"base": "${name}",
+		"apply": [
+			{ "name": "regReplace", "args": ["-", "_"] }
+		]
+	},
+	"block": {
+		"base": "${name}",
+		"apply": [
+			{ "name": "capitalize", "args": [true, "-"] },
+			{ "name": "regReplace", "args": ["-", ""] }
+		]
+	}
+}
