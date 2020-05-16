@@ -58,7 +58,7 @@ const skel = {
 					var base = this.fillOpts(template._opts[key].base);
 
 					template._opts[key].apply.forEach((transformation, index) => {
-						var args = template._opts[key].apply[index].args.map((arg) => { return typeof arg === 'string' ? this.fillOpts(arg) : arg; });
+						var args = template._opts[key].apply[index].args ? template._opts[key].apply[index].args.map((arg) => { return typeof arg === 'string' ? this.fillOpts(arg) : arg; }) : [];
 
 						transformation = template._opts[key].apply[index].name;
 
