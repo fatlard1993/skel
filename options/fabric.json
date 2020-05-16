@@ -17,7 +17,7 @@
 	"_NAME": {
 		"base": "${name}",
 		"apply": [
-			{ "name": "capitalize", "args": [true, "_"] },
+			{ "name": "toUpperCase" },
 			{ "name": "regReplace", "args": ["-", "_"] }
 		]
 	},
