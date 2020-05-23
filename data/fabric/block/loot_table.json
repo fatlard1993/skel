@@ -6,12 +6,10 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "${id}:${name}"
+          "name": "${id}:${_name}"
         }
       ],
-      "conditions": [
-        { "condition": "minecraft:survives_explosion" }
-      ]
+      "conditions": [{ "condition": "minecraft:survives_explosion" }]
     }
   ]
 }
