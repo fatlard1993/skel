@@ -1,3 +1,4 @@
+const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const exec = require('child_process').exec;
@@ -14,7 +15,7 @@ const skel = {
 	},
 	init: function(opts){
 		this.rootPath = function rootPath(){ return path.join(opts.rootFolder, ...arguments); };
-		this.config = new (require('config-manager'))(this.rootPath('config.json'));
+		this.config = new (require('config-manager'))(path.join(os.homedir(), '.skel.config'));
 
 		if(opts.configure){
 			this.config.current = Object.assign(this.config.current, opts.args);
