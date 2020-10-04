@@ -136,6 +136,12 @@ const skel = {
 	fillOpts: function(text){
 		Object.keys(this.opts).forEach((option) => { text = text.replace(new RegExp('\\${'+ option +'}', 'g'), this.opts[option]); });
 
+		var unmatchedOpts = text.match(/\${\w+}/gm);
+
+		if(unmatchedOpts && unmatchedOpts.length) log.warn(`Unmatched options: ${unmatchedOpts.join(', ')}`);
+
+		if(unmatchedOpts && this.opts.strict) throw Error('Found unmatched options');
+
 		return text;
 	},
 	writeFile: function(name, dir, text = ''){
