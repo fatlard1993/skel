@@ -50,6 +50,8 @@ const skel = {
 		if(template._opts){
 			if(typeof template._opts === 'string') template._opts = require(this.rootPath('options', template._opts));
 
+			if(typeof template._opts === 'object' && template._opts instanceof Array) util.clone(template._opts).forEach((opt, index) => { template._opts = Object.assign(index === 0 ? {} : template._opts, require(this.rootPath('options', template._opts))); });
+
 			log(1)('Loading template._opts', template._opts);
 
 			Object.keys(template._opts).forEach((key) => {
