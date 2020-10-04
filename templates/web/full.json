@@ -1,4 +1,5 @@
 {
+	"_opts": "name",
 	"${name}": {
 		"client": {
 			"css": {
@@ -27,7 +28,8 @@
 			}
 		},
 		"server": {
-			"index.js": "#!/usr/bin/env node\n\nconst log = require('log');\n\n"
+			"index.js": ["node/index.js"],
+			"${camelName}.js": ["web/node/main.js"]
 		},
 		".gitignore": "**/node_modules\n\ntemp",
 		".npmrc": "package-lock=false",
