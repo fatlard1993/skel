@@ -1,0 +1,4 @@
+{
+	"${_name}": "#!/bin/bash\n\n",
+	"_scripts": ["bash/init"]
+}
