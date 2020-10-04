@@ -35,7 +35,7 @@ const skel = {
 		this.create(require(this.rootPath('templates', this.opts.type)));
 	},
 	create: function(template, folder = process.cwd()){
-		log(1)(template);
+		log(1)('Create template: ', template);
 
 		var scripts = [];
 
@@ -79,7 +79,7 @@ const skel = {
 			delete template._opts;
 		}
 
-		log(1)('Loaded options', this.opts);
+		log(2)('Loaded options', this.opts);
 
 		Object.keys(template).forEach((name) => {
 			const subTemplate = template[name];

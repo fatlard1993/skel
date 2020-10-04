@@ -66,7 +66,7 @@ process.env.COLOR = true;
 
 const log = require('log');
 
-log(1)(opts);
+log(1)('CLI opts: ', opts);
 
 if(!templates.length) return log.error(`No templates exist yet! Put your templates in ${rootPath('templates')}`);
 
