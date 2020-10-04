@@ -1,0 +1,31 @@
+{
+	"name": "${name}",
+	"version": "1.0.0",
+	"main": "server/index.js",
+	"description": "${description}",
+	"author": "${user}",
+	"license": "ISC",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/${gitHubUser}/${name}.git"
+	},
+	"bugs": {
+		"url": "https://github.com/${gitHubUser}/${name}/issues"
+	},
+	"homepage": "https://github.com/${gitHubUser}/${name}#readme",
+	"eslintConfig": {
+		"extends": "rules"
+	},
+	"devDependencies": {
+		"eslint-config-rules": "github:${gitHubUser}/eslint-config-rules",
+		"babel-eslint": "^10.1.0",
+		"eslint": "^6.8.0"
+	},
+	"dependencies": {
+		"log": "github:fatlard1993/log",
+		"yargs": "^15.3.1"
+	}
+}
