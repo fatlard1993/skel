@@ -8,45 +8,30 @@
 				"index.html": "// includes index.css index.js\n"
 			},
 			"js": {
-				"index.js": "// includes log\n"
+				"index.js": "// includes log dom\n"
+			},
+			"fonts": {},
+			"resources": {
+				"site.webmanifest": {
+					"_jsonFile": true,
+
+					"lang": "en-US",
+					"orientation": "any",
+					"display": "standalone",
+					"theme_color": "#BADA55",
+					"background_color": "#000",
+					"name": "${name}",
+					"short_name": "${name}",
+					"start_url": "/home"
+				}
 			}
 		},
 		"server": {
-			"index.js": "#!/usr/bin/env node\n"
+			"index.js": "#!/usr/bin/env node\n\nconst log = require('log');\n\n"
 		},
 		".gitignore": "**/node_modules\n\ntemp",
 		".npmrc": "package-lock=false",
-		"README.md": "# ${name}\n",
-		"package.json": {
-			"_jsonFile": true,
-			"name": "${name}",
-			"version": "1.0.0",
-			"main": "server/index.js",
-			"description": "${name}",
-			"author": "${gitHubUser}",
-			"license": "ISC",
-			"scripts": {
-				"test": "echo \"Error: no test specified\" && exit 1"
-			},
-			"repository": {
-				"type": "git",
-				"url": "git+https://github.com/${gitHubUser}/${name}.git"
-			},
-			"bugs": {
-				"url": "https://github.com/${gitHubUser}/${name}/issues"
-			},
-			"homepage": "https://github.com/${gitHubUser}/${name}#readme",
-			"eslintConfig": {
-				"extends": "rules"
-			},
-			"devDependencies": {
-				"eslint-config-rules": "github:${gitHubUser}/eslint-config-rules#2.x.x",
-				"babel-eslint": "^10.0.3",
-				"eslint": "^6.6.0"
-			},
-			"dependencies": {
-				"log": "github:fatlard1993/log#2.x.x"
-			}
-		}
+		"README.md": ["README.md"],
+		"package.json": ["web/package.json"]
 	}
 }
