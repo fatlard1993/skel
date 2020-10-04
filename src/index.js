@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const util = require('js-util');
 const yargs = require('yargs');
 const rootFolder = require('find-root')(__dirname);
 
@@ -33,6 +34,7 @@ yargs.alias({
 	s: 'simulate',
 	S: 'strict',
 	f: 'folder',
+	F: 'force',
 	t: 'type',
 	n: 'name',
 	c: 'configure'
@@ -51,6 +53,7 @@ yargs.describe({
 	s: 'See what would happen, without making changes',
 	S: 'Exit on unmatched options',
 	f: '<folder>',
+	F: 'Force (for now just forces an unsanitary name)',
 	t: `<type> (${templates.join(' | ')})`,
 	n: '<name>',
 	c: 'Save all options to config'
@@ -71,5 +74,18 @@ const log = require('log');
 log(1)('CLI opts: ', opts);
 
 if(!templates.length) return log.error(`No templates exist yet! Put your templates in ${rootPath('templates')}`);
+
+if(!opts.name) return log.error(`No name was provided, you must supply a name with -n or --name`);
+
+var cleanName = util.fromCamelCase(opts.name.replace(/[\s_]/gi, '-')).toLowerCase();
+
+if(cleanName !== opts.name){
+	if(opts.force) log.warn(`The name "${opts.name}" is unsanitary`);
+	else{
+		log.warn(`Cleaned name from "${opts.name}" to "${cleanName}"`);
+
+		opts.name = cleanName;
+	}
+}
 
 (require('./skel')).init(opts);
