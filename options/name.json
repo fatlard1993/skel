@@ -1,0 +1,34 @@
+{
+	"displayName": {
+		"base": "${name}",
+		"apply": [
+			{ "name": "capitalize", "args": [true, "-"] },
+			{ "name": "regReplace", "args": ["-", " "] }
+		]
+	},
+	"camelName": {
+		"base": "${name}",
+		"apply": [
+			{ "name": "toCamelCase", "args": [false, "-"] }
+		]
+	},
+	"upperCamelName": {
+		"base": "${name}",
+		"apply": [
+			{ "name": "toCamelCase", "args": [true, "-"] }
+		]
+	},
+	"_name": {
+		"base": "${name}",
+		"apply": [
+			{ "name": "regReplace", "args": ["-", "_"] }
+		]
+	},
+	"_NAME": {
+		"base": "${name}",
+		"apply": [
+			{ "name": "toUpperCase" },
+			{ "name": "regReplace", "args": ["-", "_"] }
+		]
+	}
+}
