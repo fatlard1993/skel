@@ -33,6 +33,8 @@ const skel = {
 		if(fs.existsSync(path.join(this.opts.folder, this.opts.name))) return log.warn(`${path.join(this.opts.folder, this.opts.name)} already exists!`);
 
 		this.create(require(this.rootPath('templates', this.opts.type)));
+
+		log.info(`Successfully built [${this.opts.type}] ${this.opts.name}`);
 	},
 	create: function(template, folder = process.cwd()){
 		log(1)('Create template: ', template);
