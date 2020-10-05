@@ -7,8 +7,8 @@
 				"index.css": "// includes dom\n"
 			},
 			"html": {
-				"head.html": ["web/client/head.js"],
-				"index.html": ["web/client/index.js"]
+				"head.html": ["web/client/head.html"],
+				"index.html": ["web/client/index.html"]
 			},
 			"js": {
 				"index.js": ["web/client/full/index.js"]
