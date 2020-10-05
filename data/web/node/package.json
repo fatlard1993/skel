@@ -25,12 +25,12 @@
 		"eslint": "^6.8.0"
 	},
 	"dependencies": {
-		"log": "github:fatlard1993/log",
-		"dom": "github:fatlard1993/dom",
+		"log": "github:fatlard1993/log#2.x.x",
+		"dom": "github:fatlard1993/dom#2.x.x",
 		"find-root": "^1.1.0",
-		"http-server": "github:fatlard1993/http-server",
-		"socket-client": "github:fatlard1993/socket-client",
-		"websocket-server": "github:fatlard1993/websocket-server",
+		"http-server": "github:fatlard1993/http-server#4.x.x",
+		"socket-client": "github:fatlard1993/socket-client#2.x.x",
+		"websocket-server": "github:fatlard1993/websocket-server#2.x.x",
 		"yargs": "^15.3.1"
 	}
 }
