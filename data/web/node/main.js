@@ -1,3 +1,5 @@
+const path = require('path');
+
 const log = require('log');
 const SocketServer = require('websocket-server');
 
