@@ -1,5 +1,6 @@
 {
 	"_opts": "name",
+	"_scripts": ["node/init"],
 	"${name}": {
 		"client": {
 			"css": {
