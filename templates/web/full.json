@@ -34,6 +34,6 @@
 		".gitignore": "**/node_modules\n\ntemp",
 		".npmrc": "package-lock=false",
 		"README.md": ["README.md"],
-		"package.json": ["web/package.json"]
+		"package.json": ["web/node/package.json"]
 	}
 }

@@ -26,6 +26,7 @@
 	},
 	"dependencies": {
 		"log": "github:fatlard1993/log",
+		"find-root": "^1.1.0",
 		"yargs": "^15.3.1"
 	}
 }

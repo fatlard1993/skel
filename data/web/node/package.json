@@ -27,6 +27,7 @@
 	"dependencies": {
 		"log": "github:fatlard1993/log",
 		"dom": "github:fatlard1993/dom",
+		"find-root": "^1.1.0",
 		"http-server": "github:fatlard1993/http-server",
 		"socket-client": "github:fatlard1993/socket-client",
 		"websocket-server": "github:fatlard1993/websocket-server",
