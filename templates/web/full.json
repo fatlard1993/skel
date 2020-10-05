@@ -4,13 +4,14 @@
 	"${name}": {
 		"client": {
 			"css": {
-				"index.css": "// includes\n"
+				"index.css": "// includes dom\n"
 			},
 			"html": {
-				"index.html": "// includes index.css index.js\n"
+				"head.html": ["web/client/head.js"],
+				"index.html": ["web/client/index.js"]
 			},
 			"js": {
-				"index.js": "// includes log dom\n"
+				"index.js": ["web/client/full/index.js"]
 			},
 			"fonts": {},
 			"resources": {
