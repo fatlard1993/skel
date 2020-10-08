@@ -1,9 +1,9 @@
 const log = require('log');
 
-const ${camelName} = {
+const ${upperCamelName} = {
 	init: function(opts){
 		log.info('[${displayName}] Initialized', opts);
 	}
 };
 
-module.exports = ${camelName};
+module.exports = ${upperCamelName};
