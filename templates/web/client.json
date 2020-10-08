@@ -1,4 +1,5 @@
 {
+	"_opts": "name",
 	"${name}": {
 		"src": {
 			"index.css": "// includes dom\n\n",
