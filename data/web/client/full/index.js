@@ -2,10 +2,17 @@
 // babel
 /* global log dom socketClient */
 
-const ${camelName} = {
+const ${upperCamelName} = {
 	init: function(){
 		socketClient.init();
+
+		socketClient.on('init', (data) => {
+			${upperCamelName}.draw(data);
+		});
+	},
+	draw: function(){
+
 	}
 };
 
-dom.onLoad(${camelName}.init);
+dom.onLoad(${upperCamelName}.init);

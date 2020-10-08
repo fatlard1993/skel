@@ -2,5 +2,5 @@
 // babel
 /* global log dom */
 
-const ${camelName} = {
+const ${upperCamelName} = {
 };

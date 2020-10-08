@@ -3,7 +3,7 @@ const path = require('path');
 const log = require('log');
 const SocketServer = require('websocket-server');
 
-const ${camelName} = {
+const ${upperCamelName} = {
 	init: function(opts){
 		const { app, staticServer } = require('http-server').init(opts.port, opts.rootFolder);
 
@@ -19,8 +19,10 @@ const ${camelName} = {
 	socketEndpoints: {
 		client_connect: function(){
 			log('Client connected');
+
+			this.reply('init', {});
 		}
 	}
 };
 
-module.exports = ${camelName};
+module.exports = ${upperCamelName};
