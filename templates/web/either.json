@@ -1,0 +1,12 @@
+{
+	"_opts": "name",
+	"${name}": {
+		"src": {
+			"index.js": ["web/either/index.js"]
+		},
+		".gitignore": "**/node_modules\n\ntemp",
+		".npmrc": "package-lock=false",
+		"README.md": ["README.md"],
+		"package.json": ["web/either/package.json"]
+	}
+}
