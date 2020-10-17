@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const exec = require('child_process').exec;
 
-const log = require('log');
+const log = new (require('log'))({ tag: 'skel' });
 const util = require('js-util');
 const fsExtended = require('fs-extended');
 

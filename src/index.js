@@ -65,13 +65,9 @@ var args = yargs.argv;
 
 var opts = Object.assign(args, { args: Object.assign({}, args), rootFolder, templates, verbosity: Number(args.verbosity) });
 
-//log args
-process.env.DBG = opts.verbosity;
-process.env.COLOR = true;
+const log = new (require('log'))({ tag: 'skel', color: true, verbosity: opts.verbosity });
 
-const log = require('log');
-
-log(1)('CLI opts: ', opts);
+log(1)('Options', opts);
 
 if(!templates.length) return log.error(`No templates exist yet! Put your templates in ${rootPath('templates')}`);
 

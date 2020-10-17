@@ -1,8 +1,8 @@
-const log = require('log');
+const log = new (require('log'))({ tag: '${name}' });
 
 const ${camelName} = {
 	init: function(opts){
-		log.info('[${displayName}] Initialized', opts);
+		log.info('Initialized', opts);
 	}
 };
 

@@ -2,8 +2,4 @@ const ${camelName} = {
 
 };
 
-if(typeof window === 'undefined'){
-	${camelName}.isNode = true;
-
-	module.exports = ${camelName};
-}
+if(typeof module === 'object') module.exports = ${camelName};

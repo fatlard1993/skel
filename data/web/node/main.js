@@ -1,6 +1,6 @@
 const path = require('path');
 
-const log = require('log');
+const log = new (require('log'))({ tag: '${name}' });
 const SocketServer = require('websocket-server');
 
 const ${camelName} = {
@@ -15,6 +15,8 @@ const ${camelName} = {
 		app.get('/home', (req, res, next) => { res.sendPage('index'); });
 
 		this.socketServer.registerEndpoints(this.socketEndpoints);
+
+		log('Initialized');
 	},
 	socketEndpoints: {
 		client_connect: function(){

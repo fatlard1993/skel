@@ -27,23 +27,14 @@ yargs.describe({
 	v: '<level>'
 });
 
-var opts = yargs.argv;
+const args = yargs.argv;
 
-opts.rootFolder = rootFolder;
+['_', '$0', 'v'].forEach((item) => { delete args[item]; });
 
-delete opts._;
-delete opts.$0;
-delete opts.h;
-delete opts.v;
+const opts = Object.assign(args, { args: Object.assign({}, args), rootFolder, verbosity: Number(args.verbosity) });
 
-opts.verbosity = Number(opts.verbosity);
+const log = new (require('log'))({ tag: '${name}', color: true, verbosity: opts.verbosity });
 
-//log args polyfill
-process.env.DBG = opts.verbosity;
-process.env.COLOR = true;
-
-const log = require('log');
-
-log(1)('[${displayName}] Options', opts);
+log(1)('Options', opts);
 
 (require('./${camelName}')).init(opts);
