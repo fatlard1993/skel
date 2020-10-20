@@ -2,7 +2,7 @@ import Log from 'log';
 import dom from 'dom';
 import socketClient from 'socket-client';
 
-const log = new Log();
+const log = new Log({ verbosity: parseInt(dom.storage.get('logVerbosity') || 0) });
 
 const ${camelName} = {
 	init: function(){
