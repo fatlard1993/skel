@@ -41,4 +41,4 @@ const log = new (require('log'))({ tag: '${name}', color: true, verbosity: opts.
 
 log(1)('Options', opts);
 
-(require('./${camelName}')).init(opts);
+require('./${camelName}').init(opts);
