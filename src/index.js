@@ -27,6 +27,10 @@ function registerTemplateFolder(folder){
 
 registerTemplateFolder();
 
+yargs.parserConfiguration({
+	'camel-case-expansion': false
+});
+
 yargs.alias({
 	h: 'help',
 	ver: 'version',
