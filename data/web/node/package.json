@@ -25,7 +25,7 @@
 		"eslint": "^6.8.0"
 	},
 	"dependencies": {
-		"log": "github:fatlard1993/log#2.x.x",
+		"log": "github:fatlard1993/log#3.x.x",
 		"dom": "github:fatlard1993/dom#2.x.x",
 		"find-root": "^1.1.0",
 		"http-server": "github:fatlard1993/http-server#4.x.x",
