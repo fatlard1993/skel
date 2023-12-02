@@ -4,8 +4,56 @@ const path = require('path');
 const exec = require('child_process').exec;
 
 const log = new (require('log'))({ tag: 'skel' });
-const util = require('js-util');
-const fsExtended = require('fs-extended');
+const { default: util } = require('./utils');
+
+const catSync = (filePath) =>{
+	var fileData;
+
+	try{ fileData = fs.readFileSync(filePath, 'utf8'); }
+
+	catch(err){
+		if(err.code !== 'ENOENT') return log.error(err);
+
+		log.warn(1)(`Can't read ${filePath}, doesn't exist`);
+
+		fileData = '';
+	}
+
+	return fileData;
+}
+
+const copySync = (source, target) => {
+	log.info(1)('copy', source, target);
+
+	if(fs.existsSync(target) && fs.lstatSync(target).isDirectory()) target = path.join(target, path.basename(source));
+
+	fs.writeFileSync(target, fs.readFileSync(source));
+}
+
+const mkdir = (dir) => {
+	if(!dir) return;
+
+	log(4)(`Creating directory: ${dir}`);
+
+	for(var x = dir.length - 2; x >= 0; --x){
+		if(dir.charAt(x) === '/' || dir.charAt(x) === path.sep){
+			mkdir(dir.slice(0, x));
+
+			break;
+		}
+	}
+
+	try{
+		fs.mkdirSync(dir);
+
+		log()(`Created directory: ${dir}`);
+	}
+	catch(err){
+		if(err.code !== 'EEXIST') return log.error()(dir, err);
+
+		log.warn(4)(`Can't make ${dir}, already exists`);
+	}
+}
 
 const skel = {
 	optTransformations: {
@@ -15,7 +63,7 @@ const skel = {
 	},
 	init: function(opts){
 		this.rootPath = function rootPath(){ return path.join(opts.rootFolder, ...arguments); };
-		this.config = new (require('config-manager'))(path.join(os.homedir(), '.skel.config'));
+		this.config = new (require('./configManager'))(path.join(os.homedir(), '.skel.config'));
 
 		if(opts.configure){
 			this.config.current = Object.assign(this.config.current, opts.args);
@@ -99,7 +147,7 @@ const skel = {
 			}
 
 			else if(subTemplate._data){
-				if(fs.existsSync(this.rootPath('data', subTemplate._data))) fsExtended.copySync(this.rootPath('data', subTemplate._data), path.join(folder, name));
+				if(fs.existsSync(this.rootPath('data', subTemplate._data))) copySync(this.rootPath('data', subTemplate._data), path.join(folder, name));
 
 				else log.error(`Missing ${this.rootPath('data', subTemplate._data)}`);
 
@@ -110,7 +158,7 @@ const skel = {
 				var templateFile = '';
 
 				subTemplate.forEach((file) => {
-					if(fs.existsSync(this.rootPath('data', file))) templateFile += fsExtended.catSync(this.rootPath('data', file));
+					if(fs.existsSync(this.rootPath('data', file))) templateFile += catSync(this.rootPath('data', file));
 
 					else log.error(`Missing ${this.rootPath('data', file)}`);
 				});
@@ -120,7 +168,7 @@ const skel = {
 
 			log(1)('mkdir', path.join(folder, name));
 
-			fsExtended.mkdir(path.join(folder, name));
+			mkdir(path.join(folder, name));
 
 			this.create(subTemplate, path.join(folder, name));
 		});
